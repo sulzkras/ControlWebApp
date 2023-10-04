@@ -1,0 +1,17 @@
+{% extends "ControlApp/base.html" %}
+
+{% block content %}
+
+  <p>Темы</p>
+  <ul>
+    {% for topic in topics %}
+        <li>
+            <a href="{% url 'ControlApp:topic' topic.id %}">{{ topic }}</a>
+        </li>
+    {% empty %}
+      <li>Пока не было добавлено темы.</li>
+    {% endfor %}
+  </ul>
+  <a href="{% url 'ControlApp:new_topic' %}">Добавить новую тему:</a>
+
+{% endblock content %}

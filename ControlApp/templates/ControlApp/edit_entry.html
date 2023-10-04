@@ -1,0 +1,13 @@
+{% extends "ControlApp/base.html" %}
+
+{% block content %}
+
+  <p><a href="{% url 'ControlApp:topic' topic.id %}">{{ topic }}</a></p>
+  <p>Добавить посещение:</p>
+  <form action="{% url 'ControlApp:edit_entry' entry.id %}" method='post'>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button name="submit">сохранить изменения</button>
+  </form>
+
+{% endblock content %}

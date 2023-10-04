@@ -1,0 +1,12 @@
+{% extends "ControlApp/base.html" %}
+
+{% block content %}
+
+    <p>Добавление новой темы:</p>
+    <form action="{% url 'ControlApp:new_topic' %}" method='post'>
+        {% csrf_token %}
+        {{ form.as_p }}
+    <button name="submit">добавить тему</button>
+    </form>
+
+{% endblock content %}

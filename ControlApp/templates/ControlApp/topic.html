@@ -1,0 +1,24 @@
+
+{% extends 'ControlApp/base.html' %}
+
+{% block content %}
+
+  <p>Тема: {{ topic }}</p>
+  <p>Посещения:</p>
+  <p>
+    <a href="{% url 'ControlApp:new_entry' topic.id %}">добавить новое посещение</a>
+  </p>
+  <ul>
+  {% for entry in entries %}
+    <li>
+      <p>{{ entry.date_added|date:'d M Y, H:i' }}</p>
+      <p>{{ entry.text|linebreaks }}</p>
+      <p>
+        <a href="{% url 'ControlApp:edit_entry' entry.id %}">Добавить посещение</a>
+      </p>
+    </li>
+  {% empty %}
+    <li>Здесь пока никого не было...</li>
+  {% endfor %}
+  </ul>
+{% endblock content %}
